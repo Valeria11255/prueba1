@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>TABLA DE LOCATION</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">C R U D</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="Countries">Countries</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Departments">Departments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Employees">Employees</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Jobs">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="JobsHistory">JobsHistory</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Location">Location</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Regions">Regions</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+
+<div class="card-header">
+	<h3>Jobs</h3>
+</div>
+
+
+		<br>	
+		<div class="container mt-4">
+		<p align="right">
+		<a th:href="@{/Jobsnew}" class="btn btn-warning">  Agregar </a>
+	  	</p>
+		<table class="table table-striped table-bordered table-hover">
+			<thead>
+			  <tr>
+			    <th>JOB ID</th>
+			    <th>JOB TITLE</th>
+			    <th>MIN SALARY</th>
+			    <th>MAX SALARY</th>
+			    <th></th>
+			  </tr>
+			  </thead>
+			  <tbody>
+			  <tr th:each="jobs: ${jobs}">
+			    <td th:text="${jobs.jobId}"></td>
+			    <td th:text="${jobs.jobTitle}"></td>
+			    <td th:text="${jobs.minSalary}"></td>
+			    <td th:text="${jobs.maxSalary}"></td>
+			    			    	    
+			    <td><a class="btn btn-info" th:href="@{/JobsModificar/}+${jobs.jobId}">Editar</a>          
+		        <a class="btn btn-danger" th:href="@{/JobsEliminar/{jobId}(jobId=${jobs.jobId})}">Eliminar</a></td>
+			  </tr>
+			  </tbody>		  
+		</table>
+	</div>
+	
+	
+	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
